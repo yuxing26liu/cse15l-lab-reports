@@ -1,5 +1,6 @@
 # **Lab Report 1 - Remote Access and Filesystem** 
 ---
+<pre>
 * Share an example of using the command with no arguments.
 ```
 cd
@@ -70,6 +71,7 @@ It will prints out the absolute path to the file.
 (base) yuxing@hoshis-MacBook-Pro ~ % ls /Users/yuxing/Desktop/Project-Team-1/index.html
 /Users/yuxing/Desktop/Project-Team-1/index.html
 ```
+</pre>
 
 
 ```
