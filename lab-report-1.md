@@ -1,6 +1,6 @@
 # **Lab Report 1 - Remote Access and Filesystem** 
 ---
-<pre>
+
 * Share an example of using the command with no arguments.
   - 
 ```
@@ -91,4 +91,4 @@ cat /Users/yuxing/Desktop/Project-Team-1/index.html
 Absolue path: /home/user
 It prints out the code inside the index.html file. 
 
-</pre>
+
