@@ -26,7 +26,7 @@ cat
 ```
 *Defination of cat : cat <path1> <path2> ... - “Concatenate” Used to print the contents of one or more files given by the paths*
 Absolute path: /home/user
-When type in cat without argument, the terminal requires you to continue type in something and repeats the random words you type in. It will results in an error. 
+When type in cat without argument, the terminal requires you to continue type in something and repeats the random words you type in. It doesn't result in an error directly; But it waits for input from the user and echoes it back.
 (From google search) Without argument, the cat command reads from standard input and write to its standard output.
 
 
@@ -36,7 +36,7 @@ When type in cat without argument, the terminal requires you to continue type in
 cd Desktop
 ```
 Absolute path: /home/user
-After the command: /Users/yuxing/Applications 
+After the command: /home/user/Desktop (expample in my terminal: /Users/yuxing/Applications )
 It moves to my Desktop directory from my orignial directory because cd takes the name of the folder you want to move to and then change to that direcoty. 
   
 
@@ -53,7 +53,7 @@ It didn't change my working direcoty but list out all the file that's existing i
 cat Desktop
 ```
 Absolute path: /home/user
-It prints out cat: Applications: Is a directory. 'cat' is designed to displat the contents of files not directories and will cause error. 
+It prints out 'cat: Applications: Is a directory.' 'cat' is designed to displat the contents of files not directories and will cause error. 
 
 
   
