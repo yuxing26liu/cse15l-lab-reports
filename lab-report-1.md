@@ -1,18 +1,14 @@
 # **Lab Report 1 - Remote Access and Filesystem** 
 * Share an example of using the command with no arguments.
 ```
-{
 cd
-}
 ```
 *Defination of cd : cd <path> - “Change Directory” Used to switch the current working directory to the given path*
 Absolute path: /home/user
 If use without arguments, cd changes the directory to the user's home directory. It does not display any information. 
 
 ```
-{
 ls
-}
 ```
 Defination of ls : ls <path> - “List” Used to list the files and folders the given path
 Absolute path: /home/user
