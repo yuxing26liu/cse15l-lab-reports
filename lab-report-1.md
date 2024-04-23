@@ -4,19 +4,23 @@
 * Share an example of using the command with no arguments.
 
 ```
-cd
+(base) yuxing@hoshis-MacBook-Pro ~ % cd
+(base) yuxing@hoshis-MacBook-Pro ~ % 
 ```
-*Defination of cd : cd <path> - “Change Directory” Used to switch the current working directory to the given path*
+*Defination of cd : Change Directory. Used to switch the current working directory to the given path*
 Absolute path: /home/user
-If use without arguments, cd default changes the directory to the user's home directory. It does not display any information. 
+If use without arguments, cd default changes the directory to the user's home directory. It does not display any information. This output is not an error. 
 
 
 
 ```
-ls
+(base) yuxing@hoshis-MacBook-Pro ~ % ls
+Applications			Pictures
+Applications (Parallels)	Postman
+
 ```
 Defination of ls : ls <path> - “List” Used to list the files and folders the given path
-Absolute path: /home/user
+Absolute path: '/home/user'
 ls lists the contents of current working directory which is /home/user because no arguments are provided. It prints out the files and directories in the working directory. 
 
 
