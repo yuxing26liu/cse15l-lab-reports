@@ -26,7 +26,9 @@ ls lists the contents of current working directory which is `/home/user` because
 
     
 ```
-cat 
+(base) yuxing@hoshis-MacBook-Pro ~ % cat
+random words 
+random words 
 ```
 *Defination of cat : cat <path1> <path2> ... - “Concatenate” Used to print the contents of one or more files given by the paths*\
 Absolute path: `/home/user` 
@@ -37,7 +39,8 @@ When type in cat without argument, the terminal requires you to continue type in
   
 * Share an example of using the command with a path to a directory as an argument.
 ```
-cd Desktop
+(base) yuxing@hoshis-MacBook-Pro ~ % cd Desktop
+(base) yuxing@hoshis-MacBook-Pro Desktop % 
 ```
 Absolute path:`/home/user`
 After the command: `/home/user/Desktop` 
@@ -46,7 +49,11 @@ It moves to my Desktop directory from my orignial directory because cd takes the
 
     
 ```
-ls Desktop
+(base) yuxing@hoshis-MacBook-Pro ~ % ls Desktop
+BasketTest.java
+BasketTest1.java
+CSE 12.pdf
+CSE 15L.pdf
 ```
 Absolute path: `/home/user`
 It didn't change my working direcoty but list out all the file that's existing in my Desktop directory. This is not an error. 
@@ -54,7 +61,8 @@ It didn't change my working direcoty but list out all the file that's existing i
 
     
 ```
-cat Desktop
+(base) yuxing@hoshis-MacBook-Pro ~ % cat Desktop
+cat: Desktop: Is a directory
 ```
 Absolute path: `/home/user`
 It prints out 'cat: Applications: Is a directory.' 'cat' is designed to displat the contents of files not directories and will cause error. 
@@ -63,12 +71,14 @@ It prints out 'cat: Applications: Is a directory.' 'cat' is designed to displat 
   
 * Share an example of using the command with a path to a file as an argument.
 ```
-cd /Users/yuxing/Desktop/Project-Team-1
+(base) yuxing@hoshis-MacBook-Pro ~ % cd /Users/yuxing/Desktop/Project-Team-1
+(base) yuxing@hoshis-MacBook-Pro Project-Team-1 % 
 ```
 or 
 ```
-cd Desktop
-cd Project-Team-1
+(base) yuxing@hoshis-MacBook-Pro ~ % cd Desktop
+(base) yuxing@hoshis-MacBook-Pro Desktop % cd Project-Team-1
+(base) yuxing@hoshis-MacBook-Pro Project-Team-1 % 
 ```
 Absolute path: `/home/user`
 Absolute path after the command: `/Users/yuxing/Desktop/Project-Team-1`
@@ -96,6 +106,16 @@ Because 'ls' is meant to list contents of directories not file. This is not an e
 ```
 cat /Users/yuxing/Desktop/Project-Team-1/index.html
 ```
+result\
+```
+(base) yuxing@hoshis-MacBook-Pro ~ % cat /Users/yuxing/Desktop/Project-Team-1/index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" 
+```
+
 Absolue path: `/home/user`
 It prints out the code content inside the index.html file. 'cat' takes in the file path and displays the contents of one or more files without having to open the file for editing. This output is not an error. 
 
