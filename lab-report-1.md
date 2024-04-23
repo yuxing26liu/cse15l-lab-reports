@@ -9,7 +9,7 @@
 ```
 *Defination of cd : Change Directory. Used to switch the current working directory to the given path.* \
 Absolute path: `/home/user`
-If use without arguments, cd default changes the directory to the user's home directory. It does not display any information. This output is not an error. \
+If use without arguments, cd default changes the directory to the user's home directory. It does not display any information. This output is not an error.\
 
 
 
