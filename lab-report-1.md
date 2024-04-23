@@ -19,8 +19,8 @@ Applications			Pictures
 Applications (Parallels)	Postman
 
 ```
-Defination of ls : ls <path> - “List” Used to list the files and folders the given path
-Absolute path: `/home/user`
+Defination of ls : ls <path> - “List” Used to list the files and folders the given path\
+Absolute path: `/home/user`\
 ls lists the contents of current working directory which is `/home/user` because no arguments are provided. It prints out the files and directories in the working directory. It is not an error. 
 
 
@@ -28,8 +28,8 @@ ls lists the contents of current working directory which is `/home/user` because
 ```
 cat 
 ```
-*Defination of cat : cat <path1> <path2> ... - “Concatenate” Used to print the contents of one or more files given by the paths*
-Absolute path: /home/user
+*Defination of cat : cat <path1> <path2> ... - “Concatenate” Used to print the contents of one or more files given by the paths*\
+Absolute path: /home/user\
 When type in cat without argument, the terminal requires you to continue type in something and repeats the random words you type in. It doesn't result in an error directly; But it waits for input from the user and echoes it back.
 (From google search) Without argument, the cat command reads from standard input and write to its standard output. The output is an error. It gives empty lines or repeats user inputs. 
 
@@ -39,24 +39,24 @@ When type in cat without argument, the terminal requires you to continue type in
 ```
 cd Desktop
 ```
-Absolute path:`/home/user`
-After the command: `/home/user/Desktop` 
+Absolute path:`/home/user`\
+After the command: `/home/user/Desktop` \
 It moves to my Desktop directory from my orignial directory because cd takes the name of the folder you want to move to and then change to that direcoty. This output is not an error. 
-  
+  \
 
     
 ```
 ls Desktop
 ```
-Absolute path: /home/user
-It didn't change my working direcoty but list out all the file that's existing in my Desktop directory. This is not an error. 
+Absolute path: /home/user\
+It didn't change my working direcoty but list out all the file that's existing in my Desktop directory. This is not an error. \
 
 
     
 ```
 cat Desktop
 ```
-Absolute path: /home/user
+Absolute path: /home/user\
 It prints out 'cat: Applications: Is a directory.' 'cat' is designed to displat the contents of files not directories and will cause error. 
 
 
