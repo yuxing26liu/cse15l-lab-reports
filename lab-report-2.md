@@ -1,5 +1,5 @@
-# **Lab Report 2 - Servers and SSH Keys ** 
-*Part 1: 
+# **Lab Report 2 - Servers and SSH Keys** <br/>
+**Part 1:**<br/>
 Here is my code: (created a seperate file called chatServer.java based on the code provided by previous lab)
 
 ```
@@ -51,30 +51,30 @@ class chatServer {
 }
 ```
 
-and my terminal commond: 
+and my terminal commond: <br/>
 ```
 [yul269@ieng6-202]:wavelet-1:33$ javac Server.java chatServer.java
 [yul269@ieng6-202]:wavelet-1:34$ java chatServer 4006
 ```
 
-On the website I entered: 
+On the website I entered: <br/>
 ```
 http://localhost:4005/add-message?s=Hello&user=jpolitz
 ```
 
-The second commond I entered: 
+The second commond I entered: <br/>
 ```
 http://localhost:4006/add-message?s=How%20are%20you&user=yash
 ```
 
-**Part 2: **
+**Part 2:**<br/>
 
-The absolute path: 
+The absolute path: <br/>
 ```
 [yul269@ieng6-202]:~:34$ pwd
 /home/linux/ieng6/oce/26/yul269
 [yul269@ieng6-202]:~:35$ ls ~/.ssh/authorized_keys
 /home/linux/ieng6/oce/26/yul269/.ssh/authorized_keys
 ```
-Part 3: 
+**Part 3:**
 In week 3 I learned how to access remote server and how to store my key so I don't need to enter the password for it to log in anymore. The lab of seeing people access the same remote server and adding staff on my server is fun. 
