@@ -1,4 +1,4 @@
-Hello, World. 
+
 # **Lab Report 2 - Servers and SSH Keys** <br/>
 **Part 1:**<br/>
 Here is my code: (created a seperate file called chatServer.java based on the code provided by previous lab)
