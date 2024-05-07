@@ -6,8 +6,33 @@ Choose one of the bugs from week 4's lab.
 
 Provide:
 
-A failure-inducing input for the buggy program, as a JUnit test and any associated code (write it as a code block in Markdown).
-An input that doesn't induce a failure, as a JUnit test and any associated code (write it as a code block in Markdown).
+A failure-inducing input for the buggy program, as a JUnit test and any associated code (write it as a code block in Markdown). <br>
+This test is testing the merge method inside the ListExamples.java and the ListExamples.java failed the test. 
+```
+  @Test(timeout = 500)
+  public void testMergeRightEnd() {
+    List<String> left = Arrays.asList("a", "b", "c");
+    List<String> right = Arrays.asList("a", "d");
+    List<String> merged = ListExamples.merge(left, right);
+    List<String> expected = Arrays.asList("a", "a", "b", "c", "d");
+    assertEquals(expected, merged);
+  }
+```
+
+
+An input that doesn't induce a failure, as a JUnit test and any associated code (write it as a code block in Markdown).<br>
+ListExapmles passed this test. 
+```
+  @Test(timeout = 500)
+  public void testFilterMethod(){
+        List<String> list = List.of("moon", "oon", "m", "moon", "moo", "moon");
+        List<String> expected = List.of("moon", "moon", "moon");
+        List<String> output = ListExamples.filter(list, new IsMoon());
+        
+        assertEquals(expected, output);
+  }
+```
+
 The symptom, as the output of running the two tests above (provide it as a screenshot -- one test should pass, one test should fail).
 The bug, as the before-and-after code change required to fix it (as two code blocks in Markdown).
 Briefly describe (2-3 sentences) why the fix addresses the issue.
