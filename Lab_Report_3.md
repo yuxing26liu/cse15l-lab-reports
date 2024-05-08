@@ -122,30 +122,13 @@ Instruction: For each of those options, give 2 examples of using it on files and
 Along with each option/mode you show, cite your source for how you found out about it as a URL or a description of where you found it. See the syllabus on Academic Integrity and how to cite sources like ChatGPT for this class.<br>
 
 ----------------
+Find: 
 <br>
-find: 
-1. -mtime <br>
-Def:finds files and directories based on their modification <br>
-Sourse: https://man7.org/linux/man-pages/man1/find.1.html <br>
--example 1:<br> 
-```
-(base) yuxing@hoshis-MacBook-Pro docsearch-main % find ./technical -mtime -2
-(base) yuxing@hoshis-MacBook-Pro docsearch-main % find ./technical -mtime -60
-(base) yuxing@hoshis-MacBook-Pro docsearch-main % find ./technical -mtime -600
-./technical
-./technical/government
-./technical/government/About_LSC
-./technical/government/About_LSC/LegalServCorp_v_VelazquezSyllabus.txt
-./technical/government/About_LSC/Progress_report.txt
-./technical/government/About_LSC/Strategic_report.txt
-./technical/government/About_LSC/Comments_on_semiannual.txt
-./technical/government/About_LSC/Special_report_to_congress.txt
-./technical/government/About_LSC/CONFIG_STANDARDS.txt
-```
-2. -type <br>
+1. -type <br>
 Def: search based on the type of the files we want to search. Most Common types include f for regular files and d for directories.<br>
 Source: https://man7.org/linux/man-pages/man1/find.1.html <br>
 -example 1: <br>
+search for files 
 ```
 (base) yuxing@hoshis-MacBook-Pro docsearch-main % find ./technical -type f
 ./technical/government/About_LSC/LegalServCorp_v_VelazquezSyllabus.txt
@@ -162,7 +145,9 @@ Source: https://man7.org/linux/man-pages/man1/find.1.html <br>
 ./technical/government/About_LSC/reporting_system.txt
 ./technical/government/About_LSC/State_Planning_Report.txt
 ```
-- example 2: <br>
+- example 2: 
+<br>
+search for directories 
 ```
 (base) yuxing@hoshis-MacBook-Pro docsearch-main % find ./technical -type d
 ./technical
@@ -177,15 +162,69 @@ Source: https://man7.org/linux/man-pages/man1/find.1.html <br>
 ./technical/biomed
 ./technical/911report
 ```
+2. -size <br>
+Def:search for files of a specific size
+Source: https://linuxconfig.org/how-to-use-find-command-to-search-for-files-based-on-file-size
+-example 1:<br>
+search for files of a 100kb
+```
+  (base) yuxing@hoshis-MacBook-Pro docsearch-main % find ./technical -size +100k
+./technical/government/About_LSC/commission_report.txt
+./technical/government/About_LSC/State_Planning_Report.txt
+./technical/government/Env_Prot_Agen/multi102902.txt
+./technical/government/Env_Prot_Agen/ctm4-10.txt
+./technical/government/Env_Prot_Agen/bill.txt
+./technical/government/Env_Prot_Agen/tech_adden.txt 
+```
 
-4. locate <br>
-Source:https://phoenixnap.com/kb/locate-command-in-linux
-<br>
+-example 2:<br>
+find zero content file and shows there's none. <br>
+```
+(base) yuxing@hoshis-MacBook-Pro docsearch-main % find ./technical -size 0
+(base) yuxing@hoshis-MacBook-Pro docsearch-main % 
+```
+3. -mtime <br>
+Def:finds files and directories based on their modification <br>
+Sourse: https://man7.org/linux/man-pages/man1/find.1.html <br>
+-example 1:<br>
+search for files modified in the last 600 days
+```
+(base) yuxing@hoshis-MacBook-Pro docsearch-main % find ./technical -mtime -2
+(base) yuxing@hoshis-MacBook-Pro docsearch-main % find ./technical -mtime -60
+(base) yuxing@hoshis-MacBook-Pro docsearch-main % find ./technical -mtime -600
+./technical
+./technical/government
+./technical/government/About_LSC
+./technical/government/About_LSC/LegalServCorp_v_VelazquezSyllabus.txt
+./technical/government/About_LSC/Progress_report.txt
+./technical/government/About_LSC/Strategic_report.txt
+./technical/government/About_LSC/Comments_on_semiannual.txt
+./technical/government/About_LSC/Special_report_to_congress.txt
+./technical/government/About_LSC/CONFIG_STANDARDS.txt
+```
+-example 2: 
+search for files modified in the last 1 day
+```
+(base) yuxing@hoshis-MacBook-Pro docsearch-main % find ./technical -mtime +1
+./technical
+./technical/government
+./technical/government/About_LSC
+./technical/government/About_LSC/LegalServCorp_v_VelazquezSyllabus.txt
+./technical/government/About_LSC/Progress_report.txt
+./technical/government/About_LSC/Strategic_report.txt
+./technical/government/About_LSC/Comments_on_semiannual.txt
+./technical/government/About_LSC/Special_report_to_congress.txt
+./technical/government/About_LSC/CONFIG_STANDARDS.txt
+./technical/government/About_LSC/commission_report.txt
+./technical/government/About_LSC/LegalServCorp_v_VelazquezDissent.txt
+./technical/government/About_LSC/ONTARIO_LEGAL_AID_SERIES.txt
+```
 
 4.-name<br>
 Def: search for files and directories based on their names.
 Source: https://man7.org/linux/man-pages/man1/find.1.html <br>
 -example 1:
+search files that have *3-15.txt in their name 
 ```
 (base) yuxing@hoshis-MacBook-Pro docsearch-main %  find ./technical -name "*3-15.txt" 
 ./technical/biomed/1471-2121-3-15.txt
@@ -197,6 +236,7 @@ Source: https://man7.org/linux/man-pages/man1/find.1.html <br>
 ```
 
 -name example 2:
+search files that have pre in their name.
 ```
 (base) yuxing@hoshis-MacBook-Pro docsearch-main %  find ./technical -name "pre*" 
 ./technical/government/Media/predatory_loans.txt
