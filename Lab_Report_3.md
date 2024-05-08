@@ -145,9 +145,10 @@ search for files
 ./technical/government/About_LSC/reporting_system.txt
 ./technical/government/About_LSC/State_Planning_Report.txt
 ```
+
 - example 2: 
 <br>
-search for directories 
+search for directories <br>
 ```
 (base) yuxing@hoshis-MacBook-Pro docsearch-main % find ./technical -type d
 ./technical
@@ -166,7 +167,7 @@ search for directories
 Def:search for files of a specific size<br>
 Source: https://linuxconfig.org/how-to-use-find-command-to-search-for-files-based-on-file-size <br>
 -example 1:<br>
-search for files of a 100kb
+search for files of a 100kb<br>
 ```
   (base) yuxing@hoshis-MacBook-Pro docsearch-main % find ./technical -size +100k
 ./technical/government/About_LSC/commission_report.txt
@@ -188,7 +189,7 @@ find zero content file and shows there's none. <br>
 Def:finds files and directories based on their modification <br>
 Sourse: https://man7.org/linux/man-pages/man1/find.1.html <br>
 -example 1:<br>
-search for files modified in the last 600 days
+search for files modified in the last 600 days<br>
 ```
 (base) yuxing@hoshis-MacBook-Pro docsearch-main % find ./technical -mtime -2
 (base) yuxing@hoshis-MacBook-Pro docsearch-main % find ./technical -mtime -60
@@ -203,8 +204,8 @@ search for files modified in the last 600 days
 ./technical/government/About_LSC/Special_report_to_congress.txt
 ./technical/government/About_LSC/CONFIG_STANDARDS.txt
 ```
--example 2: 
-search for files modified in the last 1 day
+-example 2: <br>
+search for files modified in the last 1 day<br>
 ```
 (base) yuxing@hoshis-MacBook-Pro docsearch-main % find ./technical -mtime +1
 ./technical
@@ -222,10 +223,10 @@ search for files modified in the last 1 day
 ```
 
 4.-name<br>
-Def: search for files and directories based on their names.
+Def: search for files and directories based on their names.<br>
 Source: https://man7.org/linux/man-pages/man1/find.1.html <br>
--example 1:
-search files that have *3-15.txt in their name 
+-example 1:<br>
+search files that have *3-15.txt in their name <br>
 ```
 (base) yuxing@hoshis-MacBook-Pro docsearch-main %  find ./technical -name "*3-15.txt" 
 ./technical/biomed/1471-2121-3-15.txt
@@ -236,8 +237,8 @@ search files that have *3-15.txt in their name
 ./technical/biomed/1471-2334-3-15.txt
 ```
 
--name example 2:
-search files that have pre in their name.
+-name example 2:<br>
+search files that have pre in their name.<br>
 ```
 (base) yuxing@hoshis-MacBook-Pro docsearch-main %  find ./technical -name "pre*" 
 ./technical/government/Media/predatory_loans.txt
