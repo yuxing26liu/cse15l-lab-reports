@@ -1,4 +1,4 @@
-<h1> Lab Report 3 - Bugs and Commands (Week 5)<h1>
+<h1> Lab Report 3 - Bugs and Commands (Week 5)</h1>
 
 **Part 1 - Bugs**
 Choose one of the bugs from week 4's lab.
