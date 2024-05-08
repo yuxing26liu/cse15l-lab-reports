@@ -128,7 +128,7 @@ Find:
 Def: search based on the type of the files we want to search. Most Common types include f for regular files and d for directories.<br>
 Source: https://man7.org/linux/man-pages/man1/find.1.html <br>
 -example 1: <br>
-search for files 
+search for files <br>
 ```
 (base) yuxing@hoshis-MacBook-Pro docsearch-main % find ./technical -type f
 ./technical/government/About_LSC/LegalServCorp_v_VelazquezSyllabus.txt
@@ -146,7 +146,7 @@ search for files
 ./technical/government/About_LSC/State_Planning_Report.txt
 ```
 
-- example 2: 
+- example 2: <br>
 <br>
 search for directories <br>
 ```
