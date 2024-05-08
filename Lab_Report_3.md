@@ -163,8 +163,8 @@ search for directories
 ./technical/911report
 ```
 2. -size <br>
-Def:search for files of a specific size
-Source: https://linuxconfig.org/how-to-use-find-command-to-search-for-files-based-on-file-size
+Def:search for files of a specific size<br>
+Source: https://linuxconfig.org/how-to-use-find-command-to-search-for-files-based-on-file-size <br>
 -example 1:<br>
 search for files of a 100kb
 ```
@@ -183,6 +183,7 @@ find zero content file and shows there's none. <br>
 (base) yuxing@hoshis-MacBook-Pro docsearch-main % find ./technical -size 0
 (base) yuxing@hoshis-MacBook-Pro docsearch-main % 
 ```
+
 3. -mtime <br>
 Def:finds files and directories based on their modification <br>
 Sourse: https://man7.org/linux/man-pages/man1/find.1.html <br>
