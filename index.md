@@ -1,177 +1,247 @@
-# **Lab Report 2 - Servers and SSH Keys** <br/>
-**Part 1:**<br/>
-Here is my code: (created a seperate file called chatServer.java based on the code provided by previous lab)
+<h1> Lab Report 3 - Bugs and Commands (Week 5)</h1>
 
+**Part 1 - Bugs**
+Choose one of the bugs from week 4's lab.
+
+Provide:
+
+A failure-inducing input for the buggy program, as a JUnit test and any associated code (write it as a code block in Markdown). <br>
+This test is testing the merge method inside the ListExamples.java and the ListExamples.java failed the test. 
 ```
-import java.io.IOException;
-import java.net.URI;
+  @Test(timeout = 500)
+  public void testMergeRightEnd() {
+    List<String> left = Arrays.asList("a", "b", "c");
+    List<String> right = Arrays.asList("a", "d");
+    List<String> merged = ListExamples.merge(left, right);
+    List<String> expected = Arrays.asList("a", "a", "b", "c", "d");
+    assertEquals(expected, merged);
+  }
+```
 
-class Handler implements URLHandler {
-    String s = "";
 
-    public String handleRequest(URI url) {
-        if (url.getPath().equals("/")) {
-            return "/add-message?s=<string>&user=<string>";
-        } else if (url.getPath().contains("/add-message")) {
-            String[] parameters = url.getQuery().split("&");
-            String user = null;
-            String message = null;
-            for (String param : parameters) {
-                String[] keyword = param.split("=");
-                if (keyword[0].equals("user")) {
-                    user = keyword[1];
-                } else if (keyword[0].equals("s")) {
-                    message = keyword[1];
-                }
-            }
-            // Check if user and message are not null and append to the string
-            if (user != null && message != null) {
-                s += user + ": " + message + "\n";
-                return s; // Return the message history
+An input that doesn't induce a failure, as a JUnit test and any associated code (write it as a code block in Markdown).<br>
+ListExapmles passed this test. 
+```
+  @Test(timeout = 500)
+  public void testFilterMethod(){
+        List<String> list = List.of("moon", "oon", "m", "moon", "moo", "moon");
+        List<String> expected = List.of("moon", "moon", "moon");
+        List<String> output = ListExamples.filter(list, new IsMoon());
+        
+        assertEquals(expected, output);
+  }
+```
+
+The symptom, as the output of running the two tests above (provide it as a screenshot -- one test should pass, one test should fail).
+```
+There was 1 failure:
+1) testMergeRightEnd(TestListExamples)
+org.junit.runners.model.TestTimedOutException: test timed out after 500 milliseconds
+        at java.base@18.0.2.1/java.util.Arrays.copyOf(Arrays.java:3512)
+        at java.base@18.0.2.1/java.util.Arrays.copyOf(Arrays.java:3481)
+        at java.base@18.0.2.1/java.util.ArrayList.grow(ArrayList.java:237)
+        at java.base@18.0.2.1/java.util.ArrayList.grow(ArrayList.java:244)
+        at java.base@18.0.2.1/java.util.ArrayList.add(ArrayList.java:454)
+        at java.base@18.0.2.1/java.util.ArrayList.add(ArrayList.java:467)
+        at app//ListExamples.merge(ListExamples.java:42)
+        at app//TestListExamples.testMergeRightEnd(TestListExamples.java:18)
+        at java.base@18.0.2.1/java.lang.invoke.LambdaForm$DMH/0x0000000800c12400.invokeVirtual(LambdaForm$DMH)
+        at java.base@18.0.2.1/java.lang.invoke.LambdaForm$MH/0x0000000800c13000.invoke(LambdaForm$MH)
+        at java.base@18.0.2.1/java.lang.invoke.Invokers$Holder.invokeExact_MT(Invokers$Holder)
+
+FAILURES!!!
+Tests run: 2,  Failures: 1
+```
+
+The bug, as the before-and-after code change required to fix it (as two code blocks in Markdown).
+Before: <br> 
+```
+static List<String> filter(List<String> list, StringChecker sc) {
+static List<String> merge(List<String> list1, List<String> list2) {
+    List<String> result = new ArrayList<>();
+    int index1 = 0, index2 = 0;
+    while(index1 < list1.size() && index2 < list2.size()) {
+      if(list1.get(index1).compareTo(list2.get(index2)) < 0) {
+        result.add(list1.get(index1));
+        index1 += 1;
+      }
+      else {
+        result.add(list2.get(index2));
+        index2 += 1;
+      }
+    }
+    while(index1 < list1.size()) {
+      result.add(list1.get(index1));
+      index1 += 1;
+    }
+    while(index2 < list2.size()) {
+      result.add(list2.get(index2));
+      index1 += 1;
+    }
+    return result;
+  }
+```
+After: <br> 
+```
+public static List<String> merge(List<String> list1, List<String> list2) {
+        List<String> result = new ArrayList<>();
+        int index1 = 0, index2 = 0;
+        while (index1 < list1.size() && index2 < list2.size()) {
+            if (list1.get(index1).compareTo(list2.get(index2)) < 0) {
+                result.add(list1.get(index1));
+                index1++;
             } else {
-                return "Message not clear";
+                result.add(list2.get(index2));
+                index2++;
             }
-        } else {
-            return "404 Not Found! Or your message has issue";
         }
-    }
-}
-
-class chatServer {
-    public static void main(String[] args) throws IOException {
-        if (args.length == 0) {
-            System.out.println("Missing port number! Try any number between 1024 to 49151");
-            return;
+        while (index1 < list1.size()) {
+            result.add(list1.get(index1));
+            index1++;
         }
-
-        int port = Integer.parseInt(args[0]);
-
-        Server.start(port, new Handler());
+        while (index2 < list2.size()) {
+            result.add(list2.get(index2));
+            index2++;
+        }
+        return result;
     }
-}
+```
+Briefly describe (2-3 sentences) why the fix addresses the issue. <br> 
+Logical Error in merge Method: There is a mistake in the loop that processes the remaining elements from the second list (list2). You incorrectly increment index1 instead of index2. This causes an infinite loop if list2 has more elements left to add after list1 is exhausted.
+There is a logical error with the merge method as it incrememnt index1 instead of index2 which case an infinite loop. It also requires writing public infront of the method header. 
+<br>
+
+
+**Part 2 - Researching Commands**
+Consider the commands less, find, and grep. Choose one of them. Online, find 4 interesting command-line options or alternate ways to use the single command you chose. Many commands like these have pretty sophisticated behavior possible – it can take years to be exposed to and learn all of the possible tricks and inner workings. To find information about the commands, a simple Web search like “find command-line options” will probably give decent results. There is also a built-in command on many systems called man (short for “manual”) that displays information about commands; you can use man grep, for example, to see a long listing of information about how grep works. Also, consider asking ChatGPT! <br>
+
+For example, we saw the -name option for find in class.
+
+Instruction: For each of those options, give 2 examples of using it on files and directories from ./technical. That makes 8 total examples, all focused on a single command. Show each example as a code block that shows the command and its output, and write a sentence or two about what it’s doing and why it’s useful. <br>
+
+Along with each option/mode you show, cite your source for how you found out about it as a URL or a description of where you found it. See the syllabus on Academic Integrity and how to cite sources like ChatGPT for this class.<br>
+
+----------------
+Find: <br>
+<br>
+1. -type <br>
+Def: search based on the type of the files we want to search. Most Common types include f for regular files and d for directories.<br>
+Source: https://man7.org/linux/man-pages/man1/find.1.html <br>
+-example 1: <br>
+search for files <br>
+```
+(base) yuxing@hoshis-MacBook-Pro docsearch-main % find ./technical -type f
+./technical/government/About_LSC/LegalServCorp_v_VelazquezSyllabus.txt
+./technical/government/About_LSC/Progress_report.txt
+./technical/government/About_LSC/Strategic_report.txt
+./technical/government/About_LSC/Comments_on_semiannual.txt
+./technical/government/About_LSC/Special_report_to_congress.txt
+./technical/government/About_LSC/CONFIG_STANDARDS.txt
+./technical/government/About_LSC/commission_report.txt
+./technical/government/About_LSC/LegalServCorp_v_VelazquezDissent.txt
+./technical/government/About_LSC/ONTARIO_LEGAL_AID_SERIES.txt
+./technical/government/About_LSC/LegalServCorp_v_VelazquezOpinion.txt
+./technical/government/About_LSC/diversity_priorities.txt
+./technical/government/About_LSC/reporting_system.txt
+./technical/government/About_LSC/State_Planning_Report.txt
 ```
 
-and my terminal commond: <br/>
+- example 2: <br>
+search for directories <br>
 ```
-[yul269@ieng6-202]:wavelet-1:33$ javac Server.java chatServer.java
-[yul269@ieng6-202]:wavelet-1:34$ java chatServer 4006
-```
-
-On the website I entered: <br/>
-```
-http://localhost:4005/add-message?s=Hello&user=jpolitz
-```
-
-The second commond I entered: <br/>
-```
-http://localhost:4006/add-message?s=How%20are%20you&user=yash
-```
-
-**Part 2:**<br/>
-
-The absolute path: <br/>
-
-1. I first check the existing SSh Keys using
-```
-ls -al ~/.ssh
-```
-and it gives out this result. 
-```
-[yul269@ieng6-202]:~:58$ ls -al ~/.ssh
-total 12
-drwx--S---  2 yul269 ieng6_staff 4096 Apr 16 09:27 .
-drwxr-s--- 24 yul269 ieng6_staff 4096 Apr 24 20:48 ..
--rw-------  1 yul269 ieng6_staff 1170 Apr 16 09:31 authorized_keys
-```
-2.I then print out the absolute value for the private key
-
-```
-[yul269@ieng6-202]:~:58$ cd ~/.ssh
-[yul269@ieng6-202]:.ssh:59$ ls
-authorized_keys
-[yul269@ieng6-202]:.ssh:60$ echo $(pwd)/id_rsa
-/home/linux/ieng6/oce/26/yul269/.ssh/id_rsa
+(base) yuxing@hoshis-MacBook-Pro docsearch-main % find ./technical -type d
+./technical
+./technical/government
+./technical/government/About_LSC
+./technical/government/Env_Prot_Agen
+./technical/government/Alcohol_Problems
+./technical/government/Gen_Account_Office
+./technical/government/Post_Rate_Comm
+./technical/government/Media
+./technical/plos
+./technical/biomed
+./technical/911report
 ```
 
-This is the content of my bashrc which is used by Bash, the default shellto execute commands every time a new terminal session starts for non-login shells. 
-
-
+2. -size <br>
+Def:search for files of a specific size<br>
+Source: https://linuxconfig.org/how-to-use-find-command-to-search-for-files-based-on-file-size <br>
+-example 1:<br>
+search for files of a 100kb<br>
 ```
-[yul269@ieng6-202]:.ssh:62$ cat ~/.bashrc
-# /public/bashrc -- prototype for ${HOME}/.bashrc
-# $Id: bashrc,v 1.2 2010/07/18 21:57:59 rml Exp $
-[ -r .acms.debug ] && echo ENTERED .bashrc >&2
-public=${public:-/public}
-
-# Your .bashrc file is processed each time a new, non-login 
-# Bourne-Again SHell (bash) is initialized.
-# Changes made here will have no effect on the login bash shell;
-# such changes should be made in .bash_profile. 
-# 
-# All the usual setup is done by the following line.  Any additions 
-# you make should come after it. 
-#
-# You may add commands to the end of this file as needed. 
-# 
-
-# echo processing bash specific shell initialization
-[ -r $public/bashrc.adjunct ] && . $public/bashrc.adjunct
-
-# When this file was first placed in your home directory, a
-# pre-existing bashrc file may have been moved to a file named 
-# "${HOME}/.bashrc.old". Check the commands in that file be 
-# sure they are still needed.
-
-if [ -r ${HOME}/.bashrc.old ]
-then
-        echo "----------------------------------------------"
-        echo "About to run commands in your old bashrc file."
-        echo "Delete the file .bashrc.old, or edit .bashrc if these commands"
-        echo "should not be run anymore."
-        echo "----------------------------------------------"
-        source ${HOME}/.bashrc.old
-        echo "----------------------------------------------"
-        echo "Done running commands in your old bashrc file."
-        echo "----------------------------------------------"
-fi
-
-# CAUTION: if you choose to make adjustments to PATH,
-# it is usually advisable to *add* to the existing PATH
-# rather than resetting PATH completely.  By adding, there
-# is less chance of inadvertently losing important elements.
-# For example:  set path = ( $path ${HOME}/bin )
-[ -r .acms.debug ] && echo EXITING .bashrc >&2
-
+  (base) yuxing@hoshis-MacBook-Pro docsearch-main % find ./technical -size +100k
+./technical/government/About_LSC/commission_report.txt
+./technical/government/About_LSC/State_Planning_Report.txt
+./technical/government/Env_Prot_Agen/multi102902.txt
+./technical/government/Env_Prot_Agen/ctm4-10.txt
+./technical/government/Env_Prot_Agen/bill.txt
+./technical/government/Env_Prot_Agen/tech_adden.txt 
 ```
-Because it remember the password, so a terminal would display following info when I log into my ieng6 account without being asked for a password:
+
+-example 2:<br>
+find zero content file and shows there's none. <br>
 ```
-[yul269@ieng6-202]:.ssh:64$ ssh yul269@ieng6-202
-Last login: Tue Apr 16 09:31:21 2024 from 100.81.34.192
-Hello yul269, you are currently logged into ieng6-202.ucsd.edu
-
-You are using 0% CPU on this system
-
-Cluster Status 
-Hostname     Time    #Users  Load  Averages  
-ieng6-201   14:25:01   6   0.37,  0.76,  0.74
-ieng6-202   14:25:01   10  1.08,  0.93,  0.63
-ieng6-203   14:25:01   5   0.00,  0.10,  0.22
-
-You are currently over quota!
-Disk quotas for user yul269 (uid 135768): 
-     Filesystem  blocks   quota   limit   grace   files   quota   limit   grace
-172.17.65.195:/vol/home/linux/ieng6
-                1444800* 1444800 1444800            9515   31000   31000        
-  Please clean up any unnecessary files or contact the servidesk
-  for help.
- 
-
-To begin work for one of your courses [ cs15lsp24 cs12sp24b ], type its name 
-at the command prompt.  (For example, "cs15lsp24", without the quotes).
-
-To see all available software packages, type "prep -l" at the command prompt,
-or "prep -h" for more options.
-
+(base) yuxing@hoshis-MacBook-Pro docsearch-main % find ./technical -size 0
+(base) yuxing@hoshis-MacBook-Pro docsearch-main % 
 ```
-**Part 3:**
-In week 3 I learned how to access remote server and how to store my key so I don't need to enter the password for it to log in anymore. The lab of seeing people access the same remote server and adding staff on my server is fun. 
+
+3. -mtime <br>
+Def:finds files and directories based on their modification <br>
+Sourse: https://man7.org/linux/man-pages/man1/find.1.html <br>
+-example 1:<br>
+search for files modified in the last 600 days<br>
+```
+(base) yuxing@hoshis-MacBook-Pro docsearch-main % find ./technical -mtime -2
+(base) yuxing@hoshis-MacBook-Pro docsearch-main % find ./technical -mtime -60
+(base) yuxing@hoshis-MacBook-Pro docsearch-main % find ./technical -mtime -600
+./technical
+./technical/government
+./technical/government/About_LSC
+./technical/government/About_LSC/LegalServCorp_v_VelazquezSyllabus.txt
+./technical/government/About_LSC/Progress_report.txt
+./technical/government/About_LSC/Strategic_report.txt
+./technical/government/About_LSC/Comments_on_semiannual.txt
+./technical/government/About_LSC/Special_report_to_congress.txt
+./technical/government/About_LSC/CONFIG_STANDARDS.txt
+```
+-example 2: <br>
+search for files modified in the last 1 day<br>
+```
+(base) yuxing@hoshis-MacBook-Pro docsearch-main % find ./technical -mtime +1
+./technical
+./technical/government
+./technical/government/About_LSC
+./technical/government/About_LSC/LegalServCorp_v_VelazquezSyllabus.txt
+./technical/government/About_LSC/Progress_report.txt
+./technical/government/About_LSC/Strategic_report.txt
+./technical/government/About_LSC/Comments_on_semiannual.txt
+./technical/government/About_LSC/Special_report_to_congress.txt
+./technical/government/About_LSC/CONFIG_STANDARDS.txt
+./technical/government/About_LSC/commission_report.txt
+./technical/government/About_LSC/LegalServCorp_v_VelazquezDissent.txt
+./technical/government/About_LSC/ONTARIO_LEGAL_AID_SERIES.txt
+```
+
+4.-name<br>
+Def: search for files and directories based on their names.<br>
+Source: https://man7.org/linux/man-pages/man1/find.1.html <br>
+-example 1:<br>
+search files that have *3-15.txt in their name <br>
+```
+(base) yuxing@hoshis-MacBook-Pro docsearch-main %  find ./technical -name "*3-15.txt" 
+./technical/biomed/1471-2121-3-15.txt
+./technical/biomed/1471-2164-3-15.txt
+./technical/biomed/1471-2180-3-15.txt
+./technical/biomed/1471-2091-3-15.txt
+./technical/biomed/1471-2407-3-15.txt
+./technical/biomed/1471-2334-3-15.txt
+```
+
+-name example 2:<br>
+search files that have pre in their name.<br>
+```
+(base) yuxing@hoshis-MacBook-Pro docsearch-main %  find ./technical -name "pre*" 
+./technical/government/Media/predatory_loans.txt
+./technical/911report/preface.txt
+```
+
