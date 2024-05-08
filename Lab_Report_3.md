@@ -122,7 +122,7 @@ Instruction: For each of those options, give 2 examples of using it on files and
 Along with each option/mode you show, cite your source for how you found out about it as a URL or a description of where you found it. See the syllabus on Academic Integrity and how to cite sources like ChatGPT for this class.<br>
 
 ----------------
-Find: 
+Find: <br>
 <br>
 1. -type <br>
 Def: search based on the type of the files we want to search. Most Common types include f for regular files and d for directories.<br>
@@ -147,7 +147,6 @@ search for files <br>
 ```
 
 - example 2: <br>
-<br>
 search for directories <br>
 ```
 (base) yuxing@hoshis-MacBook-Pro docsearch-main % find ./technical -type d
@@ -163,6 +162,7 @@ search for directories <br>
 ./technical/biomed
 ./technical/911report
 ```
+
 2. -size <br>
 Def:search for files of a specific size<br>
 Source: https://linuxconfig.org/how-to-use-find-command-to-search-for-files-based-on-file-size <br>
