@@ -15,8 +15,10 @@ You should actually set up and run the scenario from your screenshots. It should
 
 <br>
 I create a function that's supposed to take in a txt file and use the for loop to print out the number inside the txt file (which is from 10 to 1). 
+![plot](https://github.com/yuxing26liu/cse15l-lab-reports/blob/main/1.png?raw=true)
 
 <br>
+
 This is the file structure. 
 ```
 lab-report5/
@@ -68,7 +70,7 @@ Title: Having issue when runing the function<br>
 Content: 
 Hi, I am having issue when trying to run the test.sh using bash. It says that "Error: Could not find or load main class Whileloop" and pointing to the Scanner class. 
 Below is a picture of my terminal output: 
-![plot](https://github.com/yuxing26liu/cse15l-lab-reports/blob/main/1.png?raw=true)
+![plot](https://github.com/yuxing26liu/cse15l-lab-reports/blob/main/2.png?raw=true)
 
 
 <br> 
@@ -84,7 +86,7 @@ import java.util.Scanner;
 Student: 
 Thank you so much! I added it and now it runs but I don't know why it's only printing out countdown:10 instead of from 10 to 1. 
 Below is a picture of my terminal output: 
-
+![plot](https://github.com/yuxing26liu/cse15l-lab-reports/blob/main/3.png?raw=true)
 TA: 
 Because the Scanner is inside the for loop so you created a new scanner in each loop and that's why it is causing the error. You need to move the Scanner scanner = new Scanner(file); before the for loop. 
 
