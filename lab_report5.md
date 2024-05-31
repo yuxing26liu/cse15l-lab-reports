@@ -16,7 +16,6 @@ You should actually set up and run the scenario from your screenshots. It should
 <br>
 I create a function that's supposed to take in a txt file and use the for loop to print out the number inside the txt file (which is from 10 to 1). <br>
 ![plot](https://github.com/yuxing26liu/cse15l-lab-reports/blob/main/1.png)
-
 <br>
 
 This is the file structure. 
