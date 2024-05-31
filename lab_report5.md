@@ -68,6 +68,8 @@ Title: Having issue when runing the function<br>
 Content: 
 Hi, I am having issue when trying to run the test.sh using bash. It says that "Error: Could not find or load main class Whileloop" and pointing to the Scanner class. 
 Below is a picture of my terminal output: 
+![plot](https://github.com/yuxing26liu/cse15l-lab-reports/blob/main/1.png?raw=true)
+
 
 <br> 
 <br> 
