@@ -4,7 +4,7 @@ Part 1 – Debugging Scenario
 Debugging scenario:
 <br>
 I create a function that's supposed to take in a txt file and use the for loop to print out the number inside the txt file (which is from 10 to 1). <br>
-![plot](https://github.com/yuxing26liu/cse15l-lab-reports/blob/main/1.png)
+![plot](https://github.com/yuxing26liu/cse15l-lab-reports/blob/main/1.png?raw=true)
 <br>
 
 This is the file structure. 
@@ -58,7 +58,7 @@ Title: Having issue when runing the function<br>
 Content: <br>
 Hi, I am having issue when trying to run the test.sh using bash. It says that "Error: Could not find or load main class Whileloop" and pointing to the Scanner class. 
 Below is a picture of my terminal output: <br>
-![plot](https://github.com/yuxing26liu/cse15l-lab-reports/blob/main/2.png)
+![plot](https://github.com/yuxing26liu/cse15l-lab-reports/blob/main/2.png?raw=true)
 
 
 <br> 
@@ -76,6 +76,7 @@ Thank you so much! I added it and now it runs but I don't know why it's only pri
 Below is a picture of my terminal output: <br>
 ![plot](https://github.com/yuxing26liu/cse15l-lab-reports/blob/main/3.png?raw=true)
 <br>
+<br> 
 TA: <br>
 Because the Scanner is inside the for loop so you created a new scanner in each loop and that's why it is causing the error. You need to move the Scanner scanner = new Scanner(file); before the for loop. 
 <br>
@@ -83,4 +84,4 @@ Student: <br>
 Thank you so much! It works now :) <br>
 
 Part 2 – Reflection
-In a couple of sentences, describe something you learned from your lab experience in the second half of this quarter that you didn't know before. It could be a technical topic we addressed specifically, something cool you found out on your own building on labs, something you learned from a tutor or classmate, and so on. It doesn't have to be specifically related to a lab writeup, we just want to hear about cool things you 
+It's really interesting to learn autograding because I have used that a lot in CSE12 and I never know the process or the code of the autograder. It's super cool to write test to determine the student's grade. It's also really intesting to learn vim and it is a really efficent tool and there are so many little shortcut for vim. 
