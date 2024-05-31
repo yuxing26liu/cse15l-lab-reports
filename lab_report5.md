@@ -12,7 +12,10 @@ The full command line (or lines) you ran to trigger the bug
 A description of what to edit to fix the bug
 You should actually set up and run the scenario from your screenshots. It should involve at least a Java file and a bash script. Describing the bug should involve reading some output at the terminal resulting from running one or more commands. Design an error that produces more interesting output than a single message about a syntax or unbound identifier error – showcase some interesting wrong behavior! Feel free to set this up by cloning and breaking some existing code like the grading script or code from class, or by designing something of your own from scratch, etc.
 <br>
-I used the list-examples-grader file that was written by the other group during lab 9 and used that as a debugging example. Here is the link to their github: https://github.com/dianavins/list-examples-grader 
+
+<br>
+I create a function that's supposed to take in a txt file and use the for loop to print out the number inside the txt file (which is from 10 to 1). 
+
 <br>
 This is the file structure. 
 ```
@@ -59,7 +62,7 @@ java Whileloop countdown.txt
 ```
 
 Student Post: <br>
-Title:<br>
+Title: Having issue when runing the function<br>
 
 <br>
 Content: 
