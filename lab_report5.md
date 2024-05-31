@@ -4,7 +4,7 @@ Part 1 – Debugging Scenario
 Debugging scenario:
 <br>
 I create a function that's supposed to take in a txt file and use the for loop to print out the number inside the txt file (which is from 10 to 1). <br>
-![plot](https://github.com/yuxing26liu/cse15l-lab-reports/blob/main/1.png)
+![plot](https://github.com/yuxing26liu/cse15l-lab-reports/blob/main/1.png?raw=true)
 <br>
 
 This is the file structure. 
@@ -58,7 +58,7 @@ Title: Having issue when runing the function<br>
 Content: <br>
 Hi, I am having issue when trying to run the test.sh using bash. It says that "Error: Could not find or load main class Whileloop" and pointing to the Scanner class. 
 Below is a picture of my terminal output: <br>
-![plot](https://github.com/yuxing26liu/cse15l-lab-reports/blob/main/2.png)
+![plot](https://github.com/yuxing26liu/cse15l-lab-reports/blob/main/2.png?raw=true)
 
 
 <br> 
