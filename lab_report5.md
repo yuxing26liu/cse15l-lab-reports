@@ -11,15 +11,80 @@ The contents of each file before fixing the bug
 The full command line (or lines) you ran to trigger the bug
 A description of what to edit to fix the bug
 You should actually set up and run the scenario from your screenshots. It should involve at least a Java file and a bash script. Describing the bug should involve reading some output at the terminal resulting from running one or more commands. Design an error that produces more interesting output than a single message about a syntax or unbound identifier error – showcase some interesting wrong behavior! Feel free to set this up by cloning and breaking some existing code like the grading script or code from class, or by designing something of your own from scratch, etc.
+<br>
+I used the list-examples-grader file that was written by the other group during lab 9 and used that as a debugging example. Here is the link to their github: https://github.com/dianavins/list-examples-grader 
+<br>
+This is the file structure. 
+```
+lab-report5/
+├── test.sh/
+├── countdown.txt/
+├── Whileloop.java
+```
 
+This is what inside the Whileloop.java :
+```
+public class Whileloop {
+    public static void main(String[] args) throws Exception {
+        for (int i=0;i<10;i++) {
+            File file = new File(args[0]);
+            Scanner scanner = new Scanner(file);
+            String time = scanner.nextLine();
+            System.out.println("Count Down:" + time);
+            scanner.close();
+        }
+    }
+}
 
+```
+This is what inside the countdown.txt: 
+```
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+```
 
+This is what inside the test.sh file:
+```
+javac Whileloop.java
+java Whileloop countdown.txt 
 
+```
 
+Student Post: <br>
+Title:<br>
 
+<br>
+Content: 
+Hi, I am having issue when trying to run the test.sh using bash. It says that "Error: Could not find or load main class Whileloop" and pointing to the Scanner class. 
+Below is a picture of my terminal output: 
 
+<br> 
+<br> 
 
+TA Response: 
+Looks like you didn't import the `File` and `Scanner` classes.  In Java, you need to import these classes from the `java.io` and `java.util` packages. Let me know if you need more help! 
+```
+import java.io.File;
+import java.util.Scanner;
+```
+<br>
+Student: 
+Thank you so much! I added it and now it runs but I don't know why it's only printing out countdown:10 instead of from 10 to 1. 
+Below is a picture of my terminal output: 
 
+TA: 
+Because the Scanner is inside the for loop so you created a new scanner in each loop and that's why it is causing the error. You need to move the Scanner scanner = new Scanner(file); before the for loop. 
+
+Student: 
+Thank you so much! It works now :) 
 
 Part 2 – Reflection
 In a couple of sentences, describe something you learned from your lab experience in the second half of this quarter that you didn't know before. It could be a technical topic we addressed specifically, something cool you found out on your own building on labs, something you learned from a tutor or classmate, and so on. It doesn't have to be specifically related to a lab writeup, we just want to hear about cool things you learned!
